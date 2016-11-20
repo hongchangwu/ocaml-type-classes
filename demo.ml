@@ -1,4 +1,5 @@
 open Eq
+open Num
 open Ord
 open Prelude
 open Show
@@ -26,7 +27,15 @@ let ord () =
   print_endline "+ print show_string (maximum ord_string [\"OCaml\"; \"Haskell\"; \"Clojure\"])";
   print show_string (maximum ord_string ["OCaml"; "Haskell"; "Clojure"])
 
+let num () =
+  print_endline "********** Num type class **********";
+  print_endline "+ print show_float (from_int num_float 1)";
+  print show_float (from_int num_float 1);
+  print_endline "+ print show_float (let (^) = (^) num_float in 2.5 ^ 3)";
+  print show_float (let (^) = (^) num_float in 2.5 ^ 3)
+
 let () =
   show ();
   eq ();
-  ord ()
+  ord ();
+  num ()

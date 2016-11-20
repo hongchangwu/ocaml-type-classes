@@ -24,7 +24,7 @@
 # OCaml configuration.
 #
 
-FILES[] = demo eq ord prelude show
+FILES[] = demo eq num ord prelude show
 
 PROGRAM = demo
 
