@@ -6,6 +6,8 @@ to emulate them. There are many possible ways to do that. The project
 shows a way using first-class modules.
 
 ## Quick Start
+**Prerequisites**: `ocaml`, `omake`
+
 To build the project:
 ```
 $ omake
