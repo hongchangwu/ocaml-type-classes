@@ -1,0 +1,12 @@
+*~
+\#*\#
+.\#*
+.omakedb*
+_build
+*.o
+*.opt
+*.out
+*.cmi
+*.cmo
+*.cmx
+*.omc
