@@ -8,7 +8,7 @@ shows a way using first-class modules.
 ## Quick Start
 To build the project:
 ```
-$ ./omake
+$ omake
 ```
 To run the demo:
 ```
