@@ -2,7 +2,7 @@
 
 ## Introduction
 OCaml doesn't have built-in support for type classes, but it's possible
-to emulate them. There are many possible ways to do that. The project
+to emulate them. There is more than one way to do it. The project
 shows a way using first-class modules.
 
 ## Quick Start
