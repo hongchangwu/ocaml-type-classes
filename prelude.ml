@@ -1,4 +1,8 @@
+module L = List
+
 open Eq
+open Functor
+open Higher
 open Num
 open Ord
 open Show
@@ -7,7 +11,16 @@ let elem (type a)
          (module E : Eq with type t = a)
          (x : a) =
   let open E in
-  List.exists ((==) x)
+  L.exists ((==) x)
+
+let fmap (type a)
+         (type b)
+         (type f)
+         (module F : Functor with type t = f)
+         (f : a -> b)
+         (xs : (a, f) app) =
+  let open F in
+  fmap f xs
 
 let from_int (type a)
              (module N : Num with type t = a) =
@@ -20,7 +33,7 @@ let maximum (type a)
   | [] -> failwith "Prelude.maximum: empty list"
   | x :: xs ->
      let open O in
-     List.fold_left max x xs
+     L.fold_left max x xs
 
 let minimum (type a)
             (module O : Ord with type t = a)
@@ -28,7 +41,7 @@ let minimum (type a)
   | [] -> failwith "Prelude.minimum: empty list"
   | x :: xs ->
      let open O in
-     List.fold_left min x xs
+     L.fold_left min x xs
 
 let print (type a)
           (module S : Show with type t = a)

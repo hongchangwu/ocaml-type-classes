@@ -1,4 +1,5 @@
 open Eq
+open Functor
 open Num
 open Ord
 open Prelude
@@ -34,8 +35,14 @@ let num () =
   print_endline "+ print show_float (let (^) = (^) num_float in 2.5 ^ 3)";
   print show_float (let (^) = (^) num_float in 2.5 ^ 3)
 
+let functor_ () =
+  print_endline "********** Functor type class **********";
+  print_endline "+ print (show_list show_int) ([1; 2; 3] |> List.inj |> fmap functor_list ((+) 1) |> List.prj)";
+  print (show_list show_int) ([1; 2; 3] |> List.inj |> fmap functor_list ((+) 1) |> List.prj)
+
 let () =
   show ();
   eq ();
   ord ();
-  num ()
+  num ();
+  functor_ ()

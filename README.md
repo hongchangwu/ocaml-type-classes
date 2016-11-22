@@ -19,3 +19,4 @@ $ ./demo
 
 ## Further Reading
 - [ML Modules and Haskell Type Classes: A Constructive Comparison](http://www.cse.unsw.edu.au/~chak/papers/modules-classes.pdf)
+- [Lightweight Higher-Kinded Polymorphism](https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf)
