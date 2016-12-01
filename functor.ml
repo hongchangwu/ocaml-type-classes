@@ -5,9 +5,9 @@ module type Functor = sig
   val fmap : ('a -> 'b) -> ('a, t) app -> ('b, t) app
 end
 
-module List = Newtype1(struct type 'a t = 'a list end)
+module List = Newtype1 (struct type 'a t = 'a list end)
 
-module Option = Newtype1(struct type 'a t = 'a option end)
+module Option = Newtype1 (struct type 'a t = 'a option end)
 
 module Functor_list = struct
   type t = List.t
