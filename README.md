@@ -15,13 +15,13 @@ shows one way using first-class modules.
 To build the project
 
 ```
-$ dune build
+make
 ```
 
 To run the demo
 
 ```
-$ dune build @rundemo
+make rundemo
 ```
 
 ## Further Reading
