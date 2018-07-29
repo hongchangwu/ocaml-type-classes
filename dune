@@ -1,0 +1,7 @@
+(executable
+ (name demo)
+ (libraries higher))
+
+(alias
+ (name rundemo)
+ (action (run %{exe:demo.exe})))
