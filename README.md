@@ -1,20 +1,25 @@
 # OCaml Type Classes
 
 ## Introduction
+
 OCaml doesn't have built-in support for type classes, but it's possible
 to emulate them. There is more than one way to do it. This project
-shows a way using first-class modules.
+shows one way using first-class modules.
 
 ## Quick Start
-**Prerequisites**: `ocaml`, `omake`
 
-To build the project:
+**Prerequisites**: `dune`, `higher`
+
+To build the project
+
 ```
-$ omake
+$ dune build
 ```
-To run the demo:
+
+To run the demo
+
 ```
-$ ./demo
+$ dune build @rundemo
 ```
 
 ## Further Reading
