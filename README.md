@@ -1,5 +1,7 @@
 # OCaml Type Classes
 
+[![Build Status](https://travis-ci.org/hongchangwu/ocaml-type-classes.svg?branch=master)](https://travis-ci.org/hongchangwu/ocaml-type-classes)
+
 ## Introduction
 
 OCaml doesn't have built-in support for type classes, but it's possible
