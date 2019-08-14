@@ -13,7 +13,5 @@ type weight =
   | Bold
 
 val foreground : color -> weight -> string
-
 val background : color -> weight -> string
-
 val reset : string

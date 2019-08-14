@@ -1,1 +1,5 @@
-(lang dune 1.0)
+(lang dune 1.10)
+(using fmt 1.1)
+
+(package
+ (name ocaml-type-classes))

@@ -32,11 +32,8 @@ let color_code color weight =
     | Bold -> ";1m"
   in
   color_code ^ weight_code
+;;
 
-let foreground color weight =
-  esc ^ "[3" ^ color_code color weight
-
-let background color weight =
-  esc ^ "[4" ^ color_code color weight
-
+let foreground color weight = esc ^ "[3" ^ color_code color weight
+let background color weight = esc ^ "[4" ^ color_code color weight
 let reset = esc ^ "[0m"

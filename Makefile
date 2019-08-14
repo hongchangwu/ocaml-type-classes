@@ -10,4 +10,4 @@ distclean:
 	git clean -Xdf
 
 rundemo:
-	dune build @rundemo --force
+	dune exec ./demo.exe
