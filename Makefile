@@ -1,7 +1,7 @@
 .PHONE: all clean distclean rundemo
 
 all:
-	dune build
+	dune build @all
 
 clean:
 	dune clean

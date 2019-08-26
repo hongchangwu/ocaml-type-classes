@@ -1,12 +1,12 @@
-module type Show = sig
+module type S = sig
   type t
 
   val show : t -> string
 end
 
-val show_bool : (module Show with type t = bool)
-val show_char : (module Show with type t = char)
-val show_float : (module Show with type t = float)
-val show_int : (module Show with type t = int)
-val show_list : (module Show with type t = 'a) -> (module Show with type t = 'a list)
-val show_string : (module Show with type t = string)
+val bool : (module S with type t = bool)
+val char : (module S with type t = char)
+val float : (module S with type t = float)
+val int : (module S with type t = int)
+val list : (module S with type t = 'a) -> (module S with type t = 'a list)
+val string : (module S with type t = string)

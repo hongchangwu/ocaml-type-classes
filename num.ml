@@ -1,4 +1,4 @@
-module type Num = sig
+module type S = sig
   type t
 
   val ( + ) : t -> t -> t
@@ -9,7 +9,7 @@ module type Num = sig
   val from_int : int -> t
 end
 
-module Num_int = struct
+module Int = struct
   type t = int
 
   let ( + ) = ( + )
@@ -20,9 +20,9 @@ module Num_int = struct
   let from_int x = x
 end
 
-let num_int = (module Num_int : Num with type t = int)
+let int = (module Int : S with type t = int)
 
-module Num_float = struct
+module Float = struct
   type t = float
 
   let ( + ) = ( +. )
@@ -33,4 +33,4 @@ module Num_float = struct
   let from_int = float_of_int
 end
 
-let num_float = (module Num_float : Num with type t = float)
+let float = (module Float : S with type t = float)

@@ -1,9 +1,7 @@
-open Eq
-
-module type Ord = sig
+module type S = sig
   type t
 
-  module E : Eq with type t = t
+  module E : Eq.S with type t = t
 
   val ( < ) : t -> t -> bool
   val ( <= ) : t -> t -> bool
@@ -13,7 +11,7 @@ module type Ord = sig
   val min : t -> t -> t
 end
 
-module Ord_default = struct
+module Default = struct
   let ( < ) = ( < )
   let ( <= ) = ( <= )
   let ( >= ) = ( >= )
@@ -22,8 +20,8 @@ module Ord_default = struct
   let min = min
 end
 
-module Ord_minimal
-    (E : Eq) (LE : sig
+module Minimal
+    (E : Eq.S) (LE : sig
       val ( <= ) : E.t -> E.t -> bool
     end) =
 struct
@@ -37,46 +35,46 @@ struct
   let min x y = if x <= y then x else y
 end
 
-module Ord_bool = struct
+module Bool = struct
   type t = bool
 
-  module E = (val eq_bool)
-  include Ord_default
+  module E = (val Eq.bool)
+  include Default
 end
 
-let ord_bool = (module Ord_bool : Ord with type t = bool)
+let bool = (module Bool : S with type t = bool)
 
-module Ord_char = struct
+module Char = struct
   type t = char
 
-  module E = (val eq_char)
-  include Ord_default
+  module E = (val Eq.char)
+  include Default
 end
 
-let ord_char = (module Ord_char : Ord with type t = char)
+let char = (module Char : S with type t = char)
 
-module Ord_float = struct
+module Float = struct
   type t = float
 
-  module E = (val eq_float)
-  include Ord_default
+  module E = (val Eq.float)
+  include Default
 end
 
-let ord_float = (module Ord_float : Ord with type t = float)
+let float = (module Float : S with type t = float)
 
-module Ord_int = struct
+module Int = struct
   type t = int
 
-  module E = (val eq_int)
-  include Ord_default
+  module E = (val Eq.int)
+  include Default
 end
 
-let ord_int = (module Ord_int : Ord with type t = int)
+let int = (module Int : S with type t = int)
 
-module Ord_list (O : Ord) = struct
+module List (O : S) = struct
   type t = O.t list
 
-  module E = (val eq_list (module O.E))
+  module E = (val Eq.list (module O.E))
 
   let rec ( <= ) xs ys =
     match xs, ys with
@@ -85,22 +83,22 @@ module Ord_list (O : Ord) = struct
     | x :: xs', y :: ys' -> O.( <= ) x y && xs' <= ys'
   ;;
 
-  include Ord_minimal
+  include Minimal
             (E)
             (struct
               let ( <= ) = ( <= )
             end)
 end
 
-let ord_list (type a) (module O : Ord with type t = a) =
-  (module Ord_list (O) : Ord with type t = a list)
+let list (type a) (module O : S with type t = a) =
+  (module List (O) : S with type t = a list)
 ;;
 
-module Ord_string = struct
+module String = struct
   type t = string
 
-  module E = (val eq_string)
-  include Ord_default
+  module E = (val Eq.string)
+  include Default
 end
 
-let ord_string = (module Ord_string : Ord with type t = string)
+let string = (module String : S with type t = string)

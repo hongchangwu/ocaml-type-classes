@@ -1,4 +1,4 @@
-module type Num = sig
+module type S = sig
   type t
 
   val ( + ) : t -> t -> t
@@ -9,5 +9,5 @@ module type Num = sig
   val from_int : int -> t
 end
 
-val num_int : (module Num with type t = int)
-val num_float : (module Num with type t = float)
+val int : (module S with type t = int)
+val float : (module S with type t = float)

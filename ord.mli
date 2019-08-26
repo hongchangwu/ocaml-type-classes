@@ -1,9 +1,7 @@
-open Eq
-
-module type Ord = sig
+module type S = sig
   type t
 
-  module E : Eq with type t = t
+  module E : Eq.S with type t = t
 
   val ( < ) : t -> t -> bool
   val ( <= ) : t -> t -> bool
@@ -13,9 +11,9 @@ module type Ord = sig
   val min : t -> t -> t
 end
 
-val ord_bool : (module Ord with type t = bool)
-val ord_char : (module Ord with type t = char)
-val ord_float : (module Ord with type t = float)
-val ord_int : (module Ord with type t = int)
-val ord_list : (module Ord with type t = 'a) -> (module Ord with type t = 'a list)
-val ord_string : (module Ord with type t = string)
+val bool : (module S with type t = bool)
+val char : (module S with type t = char)
+val float : (module S with type t = float)
+val int : (module S with type t = int)
+val list : (module S with type t = 'a) -> (module S with type t = 'a list)
+val string : (module S with type t = string)

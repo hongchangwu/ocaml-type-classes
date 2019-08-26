@@ -1,13 +1,13 @@
-module type Eq = sig
+module type S = sig
   type t
 
   val ( == ) : t -> t -> bool
   val ( /= ) : t -> t -> bool
 end
 
-val eq_bool : (module Eq with type t = bool)
-val eq_char : (module Eq with type t = char)
-val eq_float : (module Eq with type t = float)
-val eq_int : (module Eq with type t = int)
-val eq_list : (module Eq with type t = 'a) -> (module Eq with type t = 'a list)
-val eq_string : (module Eq with type t = string)
+val bool : (module S with type t = bool)
+val char : (module S with type t = char)
+val float : (module S with type t = float)
+val int : (module S with type t = int)
+val list : (module S with type t = 'a) -> (module S with type t = 'a list)
+val string : (module S with type t = string)

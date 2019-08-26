@@ -1,43 +1,35 @@
 open Higher
 
-module type Functor = sig
+module type S = sig
   type t
 
   val fmap : ('a -> 'b) -> ('a, t) app -> ('b, t) app
 end
 
-module List = Newtype1 (struct
-  type 'a t = 'a list
-end)
-
-module Option = Newtype1 (struct
-  type 'a t = 'a option
-end)
-
-module Functor_list = struct
-  type t = List.t
+module List = struct
+  type t = Higher_list.t
 
   let fmap f xs =
     let rec fmap' = function
       | [] -> []
       | x :: xs -> f x :: fmap' xs
     in
-    xs |> List.prj |> fmap' |> List.inj
+    xs |> Higher_list.prj |> fmap' |> Higher_list.inj
   ;;
 end
 
-let functor_list = (module Functor_list : Functor with type t = List.t)
+let list = (module List : S with type t = List.t)
 
-module Functor_option = struct
-  type t = Option.t
+module Option = struct
+  type t = Higher_option.t
 
   let fmap f o =
     let fmap' = function
       | None -> None
       | Some x -> Some (f x)
     in
-    o |> Option.prj |> fmap' |> Option.inj
+    o |> Higher_option.prj |> fmap' |> Higher_option.inj
   ;;
 end
 
-let functor_option = (module Functor_option : Functor with type t = Option.t)
+let option = (module Option : S with type t = Option.t)

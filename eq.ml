@@ -1,48 +1,48 @@
-module type Eq = sig
+module type S = sig
   type t
 
   val ( == ) : t -> t -> bool
   val ( /= ) : t -> t -> bool
 end
 
-module Eq_default = struct
+module Default = struct
   let ( == ) = ( = )
   let ( /= ) = ( <> )
 end
 
-module Eq_bool = struct
+module Bool = struct
   type t = bool
 
-  include Eq_default
+  include Default
 end
 
-let eq_bool = (module Eq_bool : Eq with type t = bool)
+let bool = (module Bool : S with type t = bool)
 
-module Eq_char = struct
+module Char = struct
   type t = char
 
-  include Eq_default
+  include Default
 end
 
-let eq_char = (module Eq_char : Eq with type t = char)
+let char = (module Char : S with type t = char)
 
-module Eq_float = struct
+module Float = struct
   type t = float
 
-  include Eq_default
+  include Default
 end
 
-let eq_float = (module Eq_float : Eq with type t = float)
+let float = (module Float : S with type t = float)
 
-module Eq_int = struct
+module Int = struct
   type t = int
 
-  include Eq_default
+  include Default
 end
 
-let eq_int = (module Eq_int : Eq with type t = int)
+let int = (module Int : S with type t = int)
 
-module Eq_list (E : Eq) = struct
+module List (E : S) = struct
   type t = E.t list
 
   let rec ( == ) xs ys =
@@ -55,14 +55,14 @@ module Eq_list (E : Eq) = struct
   let ( /= ) xs ys = not @@ (xs == ys)
 end
 
-let eq_list (type a) (module E : Eq with type t = a) =
-  (module Eq_list (E) : Eq with type t = a list)
+let list (type a) (module E : S with type t = a) =
+  (module List (E) : S with type t = a list)
 ;;
 
-module Eq_string = struct
+module String = struct
   type t = string
 
-  include Eq_default
+  include Default
 end
 
-let eq_string = (module Eq_string : Eq with type t = string)
+let string = (module String : S with type t = string)
