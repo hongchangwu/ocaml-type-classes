@@ -1,3 +1,4 @@
 (executable
  (name demo)
+ (public_name ocaml-type-classes-demo)
  (libraries higher))
