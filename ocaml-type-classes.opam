@@ -6,3 +6,22 @@ build: [
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
   ["dune" "build" "-p" name "@doc"] {with-doc}
 ]
+maintainer: ["Hongchang Wu <wuhc85@gmail.com>"]
+authors: ["Hongchang Wu <wuhc85@gmail.com>"]
+bug-reports: "https://github.com/hongchangwu/ocaml-type-classes/issues"
+homepage: "https://github.com/hongchangwu/ocaml-type-classes"
+license: "MIT"
+dev-repo: "git+https://github.com/hongchangwu/ocaml-type-classes.git"
+synopsis: "OCaml Type Classes"
+description: """
+
+ OCaml doesn't have built-in support for type classes,
+ but it's possible to emulate them.
+ There is more than one way to do it.
+ This project shows one way using first-class modules.
+ """
+depends: [
+  "ocaml" {>= "4.02"}
+  "dune" {build}
+  "higher"
+]
