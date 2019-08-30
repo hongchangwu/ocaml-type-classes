@@ -10,6 +10,8 @@ let show () =
   print Show.float 3.14;
   print_endline "+ print (Show.list Show.char) ['a'; 'b'; 'c']";
   print (Show.list Show.char) [ 'a'; 'b'; 'c' ];
+  print_endline "+ print (Show.list (Show.option Show.string)) [Some \"Type Theory\"; None]";
+  print (Show.list (Show.option Show.string)) [Some "Type Theory"; None];
   print_endline "+ print (Show.list (Show.list Show.int)) [[1; 2]; [3; 4]]";
   print (Show.list (Show.list Show.int)) [ [ 1; 2 ]; [ 3; 4 ] ]
 ;;

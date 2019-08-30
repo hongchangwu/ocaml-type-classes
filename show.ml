@@ -39,6 +39,27 @@ end
 
 let int = (module Int : S with type t = int)
 
+module String = struct
+  type t = string
+
+  let show x = "\"" ^ x ^ "\""
+end
+
+let string = (module String : S with type t = string)
+
+module Option (S : S) = struct
+  type t = S.t option
+
+  let show = function
+    | Some x -> "Some " ^ S.show x
+    | None -> "None"
+  ;;
+end
+
+let option (type a) (module S : S with type t = a) =
+  (module Option (S) : S with type t = a option)
+;;
+
 module List (S : S) = struct
   type t = S.t list
 
@@ -54,11 +75,3 @@ end
 let list (type a) (module S : S with type t = a) =
   (module List (S) : S with type t = a list)
 ;;
-
-module String = struct
-  type t = string
-
-  let show x = "\"" ^ x ^ "\""
-end
-
-let string = (module String : S with type t = string)
