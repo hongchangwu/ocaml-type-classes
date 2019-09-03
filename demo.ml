@@ -1,50 +1,53 @@
-open Ansi_color
+open ANSITerminal
 open Prelude
 
 let ( ++ ) = Pervasives.( ^ )
 
 let show () =
-  print_endline
-  @@ (foreground Cyan Bold ++ "********** Show type class **********" ++ reset);
-  print_endline "+ print Show.float 3.14";
+  print_string [ cyan; Bold ] "********** Show type class **********\n";
+  print_string [ green ] "+ print Show.float 3.14\n";
   print Show.float 3.14;
-  print_endline "+ print (Show.list Show.char) ['a'; 'b'; 'c']";
+  print_string [ green ] "+ print (Show.list Show.char) ['a'; 'b'; 'c']\n";
   print (Show.list Show.char) [ 'a'; 'b'; 'c' ];
-  print_endline "+ print (Show.list (Show.option Show.string)) [Some \"Type Theory\"; None]";
-  print (Show.list (Show.option Show.string)) [Some "Type Theory"; None];
-  print_endline "+ print (Show.list (Show.list Show.int)) [[1; 2]; [3; 4]]";
+  print_string
+    [ green ]
+    "+ print (Show.list (Show.option Show.string)) [Some \"Type Theory\"; None]\n";
+  print (Show.list (Show.option Show.string)) [ Some "Type Theory"; None ];
+  print_string [ green ] "+ print (Show.list (Show.list Show.int)) [[1; 2]; [3; 4]]\n";
   print (Show.list (Show.list Show.int)) [ [ 1; 2 ]; [ 3; 4 ] ]
 ;;
 
 let eq () =
-  print_endline
-  @@ (foreground Cyan Bold ++ "********** Eq type class **********" ++ reset);
-  print_endline "+ print Show.char (elem Eq.char 'd' ['a'; 'b'; 'c'])";
+  print_string [ cyan; Bold ] "********** Eq type class **********\n";
+  print_string [ green ] "+ print Show.char (elem Eq.char 'd' ['a'; 'b'; 'c'])\n";
   print Show.bool (elem Eq.char 'd' [ 'a'; 'b'; 'c' ]);
-  print_endline "+ print Show.bool (elem (Eq.list Eq.int) [1; 2] [[1; 2]; [3; 4]])";
+  print_string
+    [ green ]
+    "+ print Show.bool (elem (Eq.list Eq.int) [1; 2] [[1; 2]; [3; 4]])\n";
   print Show.bool (elem (Eq.list Eq.int) [ 1; 2 ] [ [ 1; 2 ]; [ 3; 4 ] ])
 ;;
 
 let ord () =
-  print_endline
-  @@ (foreground Cyan Bold ++ "********** Ord type class **********" ++ reset);
-  print_endline "+ print Show.bool (let (module O) = Ord.int in let open O in 1 < 2)";
+  print_string [ cyan; Bold ] "********** Ord type class **********\n";
+  print_string
+    [ green ]
+    "+ print Show.bool (let (module O) = Ord.int in let open O in 1 < 2)\n";
   print
     Show.bool
     (let (module O) = Ord.int in
      let open O in
      1 < 2);
-  print_endline
-    "+ print Show.string (maximum Ord.string [\"OCaml\"; \"Haskell\"; \"Clojure\"])";
+  print_string
+    [ green ]
+    "+ print Show.string (maximum Ord.string [\"OCaml\"; \"Haskell\"; \"Clojure\"])\n";
   print Show.string (maximum Ord.string [ "OCaml"; "Haskell"; "Clojure" ])
 ;;
 
 let num () =
-  print_endline
-  @@ (foreground Cyan Bold ++ "********** Num type class **********" ++ reset);
-  print_endline "+ print Show.float (from_int Num.float 1)";
+  print_string [ cyan; Bold ] "********** Num type class **********\n";
+  print_string [ green ] "+ print Show.float (from_int Num.float 1)\n";
   print Show.float (from_int Num.float 1);
-  print_endline "+ print Show.float (let (^) = (^) Num.float in 2.5 ^ 3)";
+  print_string [ green ] "+ print Show.float (let (^) = (^) Num.float in 2.5 ^ 3)\n";
   print
     Show.float
     (let ( ^ ) = ( ^ ) Num.float in
@@ -52,11 +55,11 @@ let num () =
 ;;
 
 let functor_ () =
-  print_endline
-  @@ (foreground Cyan Bold ++ "********** Functor type class **********" ++ reset);
-  print_endline
+  print_string [ cyan; Bold ] "********** Functor type class **********\n";
+  print_string
+    [ green ]
     "+ print (Show.list Show.int) ([1; 2; 3] |> Higher_list.inj |> fmap Functor.list \
-     ((+) 1) |> Higher_list.prj)";
+     ((+) 1) |> Higher_list.prj)\n";
   print
     (Show.list Show.int)
     ([ 1; 2; 3 ] |> Higher_list.inj |> fmap Functor.list (( + ) 1) |> Higher_list.prj)

@@ -1,7 +1,5 @@
-.PHONE: all clean distclean rundemo
-
 all:
-	dune build @all
+	dune build
 
 clean:
 	dune clean
@@ -11,3 +9,5 @@ distclean:
 
 rundemo:
 	dune exec ./demo.exe
+
+.PHONY: all clean distclean rundemo
