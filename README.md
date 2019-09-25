@@ -10,7 +10,7 @@ shows one way using first-class modules.
 
 ## Quick Start
 
-**Prerequisites**: `dune`, `higher`
+**Prerequisites**: `dune`, `ANSITerminal`, `higher`
 
 To build the project
 
