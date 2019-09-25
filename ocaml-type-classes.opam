@@ -23,5 +23,6 @@ description: """
 depends: [
   "ocaml" {>= "4.02"}
   "dune" {build}
+  "ANSITerminal"
   "higher"
 ]

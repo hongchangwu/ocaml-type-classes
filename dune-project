@@ -13,7 +13,8 @@
  (depends
   (ocaml (>= 4.02))
   (dune :build)
-  higher)
+   ANSITerminal
+   higher)
  (synopsis "OCaml Type Classes")
  (description "
  OCaml doesn't have built-in support for type classes,
