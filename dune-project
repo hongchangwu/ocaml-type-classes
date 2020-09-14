@@ -1,5 +1,4 @@
-(lang dune 1.10)
-(using fmt 1.1)
+(lang dune 2.0)
 
 (generate_opam_files true)
 (name ocaml-type-classes)

@@ -21,7 +21,7 @@ make
 To run the demo
 
 ```
-make rundemo
+make run
 ```
 
 ## Further Reading
