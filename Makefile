@@ -7,7 +7,7 @@ clean:
 distclean:
 	git clean -Xdf
 
-rundemo:
-	dune exec ./demo.exe
+run:
+	dune exec bin/demo.exe
 
 .PHONY: all clean distclean rundemo
