@@ -1,7 +1,8 @@
 open ANSITerminal
+open Type_classes
 open Prelude
 
-let ( ++ ) = Pervasives.( ^ )
+let ( ++ ) = Stdlib.( ^ )
 
 let show () =
   print_string [ cyan; Bold ] "********** Show type class **********\n";

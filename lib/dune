@@ -1,0 +1,3 @@
+(library
+ (name type_classes)
+ (libraries higher))
