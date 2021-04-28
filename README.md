@@ -25,5 +25,5 @@ make run
 ```
 
 ## Further Reading
-- [ML Modules and Haskell Type Classes: A Constructive Comparison](http://www.cse.unsw.edu.au/~chak/papers/modules-classes.pdf)
+- [ML Modules and Haskell Type Classes: A Constructive Comparison](http://www.stefanwehr.de/publications/Wehr_ML_modules_and_Haskell_type_classes_SHORT.pdf)
 - [Lightweight Higher-Kinded Polymorphism](https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf)
